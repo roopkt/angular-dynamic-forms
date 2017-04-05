@@ -2,9 +2,32 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss'],
+  template: `
+  <div class="app">
+    <dynamic-form [config]="config" ></dynamic-form>
+  </div>
+  `
 })
 export class AppComponent {
-  title = 'app works!';
+  config = [
+    {
+      type:'input',
+      label:'Full name',
+      name:'name',
+      placeholder:'Enter your name'
+    },
+      {
+      type:'select',
+      label:'Favorite food',
+      name:'food',
+      options:['Pizza','Hot Dogs','IceCream', 'Coffee'],
+      placeholder:'Select an option'
+    },
+      {
+      type:'button',
+      label:'Submit',
+      name:'submit'
+    }
+  ]
 }

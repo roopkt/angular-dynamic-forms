@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {DynamicFormModule}from './dynamic-form/dynamic-form.module';
+import { DynamicFormModule } from "app/dynamic-form/dynamic-form.module";
+
 @NgModule({
   declarations: [
     AppComponent
