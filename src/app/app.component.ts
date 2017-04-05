@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
   template: `
   <div class="app">
-    <dynamic-form [config]="config" ></dynamic-form>
+    <dynamic-form [config]="config"
+    (submitted) ="formSubmitted($event)">
+    </dynamic-form>
   </div>
   `
 })
@@ -29,5 +31,9 @@ export class AppComponent {
       label:'Submit',
       name:'submit'
     }
-  ]
+  ];
+
+  formSubmitted(value) {
+    console.log(value);
+  }
 }

@@ -1,5 +1,9 @@
+
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+
+import { FieldConfig } from '../../models/field-config.interface';
+import { Field } from "../../models/field.interface";
 
 @Component({
   selector: 'form-select',
@@ -19,6 +23,6 @@ import { FormGroup } from '@angular/forms';
   `
 })
 export class FormSelectComponent implements Field {
-  config;
+  config:FieldConfig;
   group: FormGroup;
 }
