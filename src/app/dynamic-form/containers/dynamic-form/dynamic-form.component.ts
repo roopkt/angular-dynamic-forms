@@ -7,10 +7,10 @@ import { FieldConfig } from '../../models/field-config.interface';
     exportAs: 'dynamicForm',
     selector: 'dynamic-form',
     styleUrls: ['dynamic-form.component.scss'],
-    template: `
+    template: ` 
     <form 
     class="dynamic-form"
-    [FormGroup] ="form"
+    [formGroup] ="form"
     (ngSubmit) ="submitted.emit(form.value)">
 
     <ng-container 
@@ -26,9 +26,12 @@ import { FieldConfig } from '../../models/field-config.interface';
 export class DynamicFormComponent implements OnInit {
     @Input()
     config: any[] = [];
+
     form: FormGroup;
+
     @Output()
     submitted: EventEmitter<any> = new EventEmitter<any>();
+
     constructor(private fb: FormBuilder) {
     }
 
@@ -37,7 +40,11 @@ export class DynamicFormComponent implements OnInit {
     }
     createGroup() {
         const group = this.fb.group({});
-        this.config.forEach(control => group.addControl(control.name, this.fb.control({})));
+        this.config.forEach(control => group.addControl(control.name, this.createControl(control)));
         return group;
+    }
+    createControl(config) {
+        const {disabled, validation,value} = config;
+        return this.fb.control({disabled,value},validation);
     }
 }
